@@ -1,5 +1,5 @@
 import Engine from '../engine/Engine';
-import GameScreen from './screen/GameScreen';
+import GameScene from './scene/GameScene';
 
 const Game = new (class AdventurerSimulator {
     constructor() {
@@ -7,7 +7,7 @@ const Game = new (class AdventurerSimulator {
     }
 
     start() {
-        let gameScreen = new GameScreen();
+        Engine.SceneManager.addScene(new GameScene());
     }
 })();
 

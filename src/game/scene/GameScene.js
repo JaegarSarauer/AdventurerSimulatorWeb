@@ -1,7 +1,8 @@
 import Panel from '../../engine/ui/Panel';
+import Scene from '../../engine/scene/Scene';
 
-export default class GameScreen {
-    constructor() {
+export default class GameScene extends Scene {
+    onStart() {
         let back = new Panel({
             x: 0,
             y: 0,

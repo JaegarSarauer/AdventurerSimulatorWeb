@@ -1,4 +1,4 @@
-import UI from './UI';
+import UIManager from './UIManager';
 
 
 export default class Panel {
@@ -73,7 +73,7 @@ export default class Panel {
     Rerenders the panel and all children.
     */
     rerender(parent = null) {
-        UI.rerender(this, parent);
+        UIManager.rerender(this, parent);
         for (let i = 0; i < Object.keys(this.children).length; i++) {
             this.children[i].rerender(this);
         }

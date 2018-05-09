@@ -1,8 +1,8 @@
 import Engine from '../Engine';
 
-const UI = new (
+const UIManager = new (
     
-class UI {
+class UIManager {
     constructor() {
         this.canvas = document.getElementById('canvas');
         this.ctx = this.canvas.getContext('2d');
@@ -31,4 +31,4 @@ class UI {
 
 )();
 
-export default UI;
+export default UIManager;
