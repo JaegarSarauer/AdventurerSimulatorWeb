@@ -1,12 +1,13 @@
-const Engine = new (class Engine {
-    constructor(test) {
-        console.info(test);
-        this.val = test;
-    }
+import UI from './ui/UI';
 
-    set(val) {
-        this.val = val;
+const Engine = new (
+    
+class Engine {
+    constructor() {
+        this.UI = UI;
     }
-})(44);
+}
+
+)();
 
 export default Engine;
