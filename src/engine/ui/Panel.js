@@ -14,6 +14,7 @@ export default class Panel {
             h: 0,
             backgroundColor: '#000000',
         }, style);
+        this.rerender();
     }
 
     /*

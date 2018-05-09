@@ -6,8 +6,13 @@ class UI {
     constructor() {
         this.canvas = document.getElementById('canvas');
         this.ctx = this.canvas.getContext('2d');
-        this.ctx.canvas.width = document.body.clientWidth;
-        this.ctx.canvas.height = document.body.clientHeight;
+        this.ctx.imageSmoothingEnabled = false;
+        this.ctx.webkitImageSmoothingEnabled = false;
+    }
+
+    setCanvasSize(w, h) {
+        this.ctx.canvas.width = w;
+        this.ctx.canvas.height = h;
         this.ctx.imageSmoothingEnabled = false;
         this.ctx.webkitImageSmoothingEnabled = false;
     }
