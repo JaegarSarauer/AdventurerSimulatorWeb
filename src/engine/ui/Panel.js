@@ -12,9 +12,11 @@ export default class Panel {
             z: 0,
             w: 0, 
             h: 0,
+            color: '#FFFFFF',
             backgroundColor: '#000000',
+            backgroundImage: null,
+            font: '32px Arial',
         }, style);
-        this.rerender();
     }
 
     /*
@@ -92,6 +94,10 @@ export default class Panel {
             s.z += ps.z;
         }
         ctx.fillStyle = s.backgroundColor;
-        ctx.fillRect(s.x, s.y, s.w, s.h);
+        if (s.backgroundImage != null) {
+            ctx.drawImage(s.backgroundImage, s.x, s.y, s.w, s.h);
+        } else {
+            ctx.fillRect(s.x, s.y, s.w, s.h);
+        }
     }
 }
