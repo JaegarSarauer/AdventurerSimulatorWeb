@@ -1,4 +1,5 @@
 import Updateable from '../update/Updateable';
+import Panel from '../ui/Panel';
 
 /*
 BaseClass for all Scenes. Extend this scene, do not instantiate on its own.
@@ -6,6 +7,13 @@ BaseClass for all Scenes. Extend this scene, do not instantiate on its own.
 export default class Scene extends Updateable {
     constructor(isPersistent) {
         super(isPersistent);
+        /*
+        UI Panels that are organized by their z index for easy rerendering.
+        */
+        this.baseUI = new Panel();
+        /*
+        Updateable non-ui objects (anything not derived from a Panel).
+        */
         this.updateableObjects = {};
     }
     
@@ -17,45 +25,41 @@ export default class Scene extends Updateable {
         return unsubscribeCallback;
     }
 
-    onUpdate() {
+    rerender() {
+        this.baseUI.rerender();
+    }
+
+    update() {
+        super.update();
         let objKeys = Object.keys(this.updateableObjects);
         for (let i = 0; i < objKeys.length; i++) {
-            if (!this.updateableObjects[objKeys[i]].hasPaused) {
-                if (this.updateableObjects[objKeys[i]].hasStarted) {
-                    this.updateableObjects[objKeys[i]].update();
-                } else {
-                    this.updateableObjects[objKeys[i]].start();
-                }
-            }
+            this.updateableObjects[objKeys[i]].update();
         }
+        this.rerender();
     }
 
     //remember to call the destructor if this is overridden.
-    onEnd() {
-        this.destructor();
+    end() {
+        let objKeys = Object.keys(this.updateableObjects);
+        for (let i = 0; i < objKeys.length; i++) {
+            this.updateableObjects[objKeys[i]].end();
+        }
+        super.end();
     }
 
-    onPause() {
-        this.hasPaused = true;
+    pause() {
+        super.pause();
         let objKeys = Object.keys(this.updateableObjects);
         for (let i = 0; i < objKeys.length; i++) {
             this.updateableObjects[objKeys[i]].pause();
         }
     }
 
-    onUnpause() {
-        this.hasPaused = false;
+    unpause() {
+        super.unpause();
         let objKeys = Object.keys(this.updateableObjects);
         for (let i = 0; i < objKeys.length; i++) {
             this.updateableObjects[objKeys[i]].unpause();
         }
-    }
-
-    destructor() {
-        let objKeys = Object.keys(this.updateableObjects);
-        for (let i = 0; i < objKeys.length; i++) {
-            this.updateableObjects[objKeys[i]].end();
-        }
-        this.unsubscribeCallback();
     }
 }

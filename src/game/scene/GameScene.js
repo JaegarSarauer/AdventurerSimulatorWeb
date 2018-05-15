@@ -50,11 +50,10 @@ export default class GameScene extends Scene {
         this.basePanel.add(this.messagesPanel);
         this.basePanel.add(this.settingsPanel);
         this.basePanel.add(this.adventurersPanel);
-        this.basePanel.rerender();
+        this.baseUI = this.basePanel;
     }
 
     onUpdate() {
         Game.MessageManager.addMessage('Testy ' + Math.random(), Game.MessageType.Normal);
-        console.info('sending msg')
     }
 }

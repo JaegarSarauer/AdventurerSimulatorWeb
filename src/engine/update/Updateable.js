@@ -7,9 +7,9 @@ Anything that updates in the game should extend this.
 export default class Updateable {
     constructor(isPersistent = false) {
         this.id = -1; //Populated on next line automatically.
+        this.unsubscribeCallback = UpdateManager.subscribeUpdateable(this, isPersistent);
         this.hasStarted = false;
         this.hasPaused = false;
-        this.unsubscribeCallback = UpdateManager.subscribeUpdateable(this, isPersistent);
     }
 
     start() {
@@ -36,7 +36,6 @@ export default class Updateable {
     }
 
     pause() {
-        console.error('FUCK OFF', this)
         if (!this.hasPaused) {
             this.onPause();
             this.hasPaused = true;

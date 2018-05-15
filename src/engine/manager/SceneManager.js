@@ -29,7 +29,6 @@ class SceneManager extends Updateable {
     }
 
     onUpdate() {
-        console.info(this)
         if (this.scenes.length > 0) {
             this.scenes[this.scenes.length - 1].update();
         }

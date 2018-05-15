@@ -1,8 +1,9 @@
 import UIManager from '../manager/UIManager';
+import Updateable from '../update/Updateable';
 
-
-export default class Panel {
+export default class Panel extends Updateable {
     constructor(style) {
+        super();
         //The id of this panel that the parent of this panel uses to identify it.
         this.parentID = -1; 
         this.children = {};

@@ -7,18 +7,16 @@ import Game from '../Game';
 export default class BuyAdventurerScene extends Scene {
     constructor() {
         super(true);
-        this.basePanel = null;
     }
 
     onStart() {
-        this.basePanel = new Panel({
+        this.baseUI = new Panel({
             x: 200,
             y: 200,
             w: 2000,
             h: 1200,
             backgroundColor: '#00ff00',
         });
-        this.basePanel.rerender();
     }
 
     onUpdate() {
