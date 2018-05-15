@@ -1,4 +1,4 @@
-import {MessageType} from '../managers/MessageManager';
+import {MessageType} from '../manager/MessageManager';
 
 export const Message = (
     msg = '', 

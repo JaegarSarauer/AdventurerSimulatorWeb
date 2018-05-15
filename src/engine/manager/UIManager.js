@@ -4,17 +4,13 @@ const UIManager = new (
     
 class UIManager {
     constructor() {
-        this.canvas = document.getElementById('canvas');
-        this.ctx = this.canvas.getContext('2d');
-        this.ctx.imageSmoothingEnabled = false;
-        this.ctx.webkitImageSmoothingEnabled = false;
     }
 
     setCanvasSize(w, h) {
-        this.ctx.canvas.width = w;
-        this.ctx.canvas.height = h;
-        this.ctx.imageSmoothingEnabled = false;
-        this.ctx.webkitImageSmoothingEnabled = false;
+        Engine.ctx.canvas.width = w;
+        Engine.ctx.canvas.height = h;
+        Engine.ctx.imageSmoothingEnabled = false;
+        Engine.ctx.webkitImageSmoothingEnabled = false;
     }
 
     /*
@@ -25,7 +21,7 @@ class UIManager {
     parent = The parent to this panel for relative calulations. Null if no parent.
     */
     rerender(panel, parent) {
-        panel.render(this.ctx, parent);
+        panel.render(Engine.ctx, parent);
     }
 }
 

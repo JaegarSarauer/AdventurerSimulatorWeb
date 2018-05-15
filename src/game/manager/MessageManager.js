@@ -1,4 +1,4 @@
-import Subscriber from '../../engine/core/Subscriber';
+import Subscriber from '../../engine/manager/internal/Subscriber';
 import {Message} from '../const/struct';
 
 export const MessageType = {

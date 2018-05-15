@@ -1,4 +1,8 @@
 /*
+    A internal manager. The structure of this class is a wrapper, meant to be used
+    internally within another object or class.
+
+
     A class that any data can be wrapped in to allow for other code to
     watch for updates.
 */

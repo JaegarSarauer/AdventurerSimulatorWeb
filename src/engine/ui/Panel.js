@@ -1,4 +1,4 @@
-import UIManager from './UIManager';
+import UIManager from '../manager/UIManager';
 
 
 export default class Panel {

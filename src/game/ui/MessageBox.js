@@ -1,4 +1,4 @@
-import UIManager from '../../engine/ui/UIManager';
+import UIManager from '../../engine/manager/UIManager';
 import Panel from '../../engine/ui/Panel';
 import Text from '../../engine/ui/Text';
 
@@ -18,23 +18,11 @@ export default class MessageBox extends Panel {
     Do not call yourself.
     */
     render(ctx, parent) {
-        let s = Object.assign({}, this.style);
-        if (parent != null) {
-            let ps = Object.assign({}, parent.style);
-            s.x += ps.x;
-            s.y += ps.y;
-            s.z += ps.z;
-        }
-        ctx.fillStyle = s.backgroundColor;
-        if (s.backgroundImage != null) {
-            ctx.drawImage(s.backgroundImage, s.x, s.y, s.w, s.h);
-        } else {
-            ctx.fillRect(s.x, s.y, s.w, s.h);
-        }
-        ctx.font = s.font;
+        super.render(ctx, parent);
+        ctx.font = this.style.font;
         Game.MessageManager.messages.value.map((msg, i) => {
             ctx.fillStyle = msg.type.color;
-            ctx.fillText(msg.msg, s.x + 15, (s.y - 20) + (s.h - (i * 37)));
+            ctx.fillText(msg.msg, this.style.x + 15, (this.style.y - 20) + (this.style.h - (i * 37)));
         })
     }
 }
