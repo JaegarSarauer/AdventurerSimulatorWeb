@@ -20,9 +20,11 @@ export default class MessageBox extends Panel {
     render(ctx, parent) {
         super.render(ctx, parent);
         ctx.font = this.style.font;
+        ctx.textBaseline = 'bottom';
+        ctx.textAlign = this.style.textAlign;
         Game.MessageManager.messages.value.map((msg, i) => {
             ctx.fillStyle = msg.type.color;
-            ctx.fillText(msg.msg, this.style.x + 15, (this.style.y - 20) + (this.style.h - (i * 37)));
+            ctx.fillText(msg.msg, this.style.x + 18, (this.style.y - 18) + (this.style.h - (i * 37)));
         })
     }
 }

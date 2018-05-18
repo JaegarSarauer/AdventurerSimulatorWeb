@@ -7,6 +7,7 @@ import BuyAdventurerScene from './scene/BuyAdventurerScene';
 
 const Game = new (class AdventurerSimulator {
     constructor() {
+        this.Engine = Engine;
         this.MessageManager = MessageManager;
         this.MessageType = MessageType;
     }

@@ -1,9 +1,9 @@
-import UIManager from './UIManager';
-
+import UIManager from '../manager/UIManager';
+import Text from './Text';
 
 export default class Button extends Text {
-    constructor(style, onClickCallback) {
-        super(style);
+    constructor(style, text, onClickCallback) {
+        super(style, text);
         this.onClickCallback = onClickCallback;
     }
 

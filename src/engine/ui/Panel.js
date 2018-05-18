@@ -8,15 +8,17 @@ export default class Panel extends Updateable {
         this.parentID = -1; 
         this.children = {};
         this.style = Object.assign({
-            x: 0,
-            y: 0,
-            z: 0,
-            w: 0, 
-            h: 0,
-            color: '#FFFFFF',
-            backgroundColor: '#000000',
-            backgroundImage: null,
-            font: '32px Arial',
+            x: 0, //number as px or string as %
+            y: 0, //number as px or string as %
+            z: 0, //number as px or string as %
+            w: 0, //number as px or string as %
+            h: 0, //number as px or string as %
+            color: '#FFFFFF', //RGB color
+            backgroundColor: '#000000', //RGB color
+            backgroundImage: null, //Asset link
+            textAlign: 'left', //left, center, right
+            textBaseline: 'middle', //top, middle, bottom
+            font: '32px Arial', //text size and font name
         }, style);
     }
 
@@ -32,9 +34,13 @@ export default class Panel extends Updateable {
         this.children[id] = panel;
         if (typeof panel.style.x === 'string') { //x in % 
             panel.style.x = (parseInt(panel.style.x) / 100) * this.style.w;
+        } else {
+            panel.style.x += this.style.x;
         }
         if (typeof panel.style.y === 'string') { //y in %
             panel.style.y = (parseInt(panel.style.y) / 100) * this.style.h;
+        } else {
+            panel.style.y += this.style.y;
         }
         if (typeof panel.style.w === 'string') { //width in %
             panel.style.w = (parseInt(panel.style.w) / 100) * this.style.w;
@@ -88,12 +94,6 @@ export default class Panel extends Updateable {
     */
     render(ctx, parent) {
         let s = Object.assign({}, this.style);
-        if (parent != null) {
-            let ps = Object.assign({}, parent.style);
-            s.x += ps.x;
-            s.y += ps.y;
-            s.z += ps.z;
-        }
         ctx.fillStyle = s.backgroundColor;
         if (s.backgroundImage != null) {
             ctx.drawImage(s.backgroundImage, s.x, s.y, s.w, s.h);

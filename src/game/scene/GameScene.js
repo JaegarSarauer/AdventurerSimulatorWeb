@@ -50,7 +50,7 @@ export default class GameScene extends Scene {
         this.basePanel.add(this.messagesPanel);
         this.basePanel.add(this.settingsPanel);
         this.basePanel.add(this.adventurersPanel);
-        this.baseUI = this.basePanel;
+        this.addUI(this.basePanel);
     }
 
     onUpdate() {

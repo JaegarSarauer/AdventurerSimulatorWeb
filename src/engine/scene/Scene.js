@@ -10,7 +10,7 @@ export default class Scene extends Updateable {
         /*
         UI Panels that are organized by their z index for easy rerendering.
         */
-        this.baseUI = new Panel();
+        this.baseUI = new Panel({});
         /*
         Updateable non-ui objects (anything not derived from a Panel).
         */
@@ -23,6 +23,11 @@ export default class Scene extends Updateable {
             delete this.updateableObjects[updateable.id];
         }
         return unsubscribeCallback;
+    }
+
+    addUI(ui) {
+        this.baseUI = ui;
+        this.rerender();
     }
 
     rerender() {
