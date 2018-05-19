@@ -46,7 +46,7 @@ class CanvasManager extends Updateable {
     adjust() {
         this.ctx.imageSmoothingEnabled = false;
         this.ctx.webkitImageSmoothingEnabled = false;
-        
+
         this.width = this.canvas.width;
         this.height = this.canvas.height;
         this.DPIWidth = this.width / this.canvas.clientWidth;

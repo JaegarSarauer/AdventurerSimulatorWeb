@@ -6,6 +6,10 @@ class UIManager {
     constructor() {
     }
 
+    addInputListener(event, callback) {
+        return Engine.InputManager.events[event].watch(callback);
+    }
+
     /*
     Passing in a panel here will call the panel's rerender.
     This allows for increased control on when to render when it is more important in the future.
