@@ -2,17 +2,14 @@ import UIManager from './manager/UIManager';
 import SceneManager from './manager/SceneManager';
 import UpdateManager from './manager/UpdateManager';
 import InputManager from './manager/InputManager';
+import CanvasManager from './manager/CanvasManager';
 
 
 const Engine = new (
     
 class Engine {
     constructor() {
-        this.canvas = document.getElementById('canvas');
-        this.ctx = this.canvas.getContext('2d');
-        this.ctx.imageSmoothingEnabled = false;
-        this.ctx.webkitImageSmoothingEnabled = false;
-
+        this.CanvasManager = CanvasManager;
         this.UIManager = UIManager;
         this.SceneManager = SceneManager;
         this.InputManager = InputManager;

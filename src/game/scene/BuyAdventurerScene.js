@@ -30,7 +30,6 @@ export default class BuyAdventurerScene extends Scene {
         () => {
             Game.Engine.SceneManager.removeScene();
         });
-        console.info(base, closeButton)
         base.add(closeButton);
         this.addUI(base);
     }
