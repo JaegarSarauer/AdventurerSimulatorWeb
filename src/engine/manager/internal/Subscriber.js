@@ -37,7 +37,7 @@ export default class Subscriber {
         return this.value;
     }
 
-    watch(callback) {
+    watch(callback, trigger = true) {
         let token = {
             id: Math.random().toString(),
             callback,
@@ -46,7 +46,8 @@ export default class Subscriber {
             }
         }
         this.listeners[token.id] = token;
-        callback(this.value);
+        if (trigger)
+            callback(this.value);
         return token;
     }
 }

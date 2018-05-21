@@ -1,5 +1,6 @@
 import Panel from '../../engine/ui/Panel';
 import Button from '../../engine/ui/Button';
+import Input from '../../engine/ui/Input';
 import Scene from '../../engine/scene/Scene';
 import MessageBox from '../ui/MessageBox';
 import * as Image from '../const/Image';
@@ -18,6 +19,20 @@ export default class BuyAdventurerScene extends Scene {
             h: 1200,
             backgroundColor: '#00ff00',
         });
+        let adventurerNameInput = new Input({
+            x: 800,
+            y: 400,
+            w: 400,
+            h: 100,
+            backgroundColor: '#000000',
+        }, 'hey');
+        let adventurerNameInput2 = new Input({
+            x: 800,
+            y: 600,
+            w: 400,
+            h: 100,
+            backgroundColor: '#000000',
+        }, 'hey');
         let closeButton = new Button({
             x: 800, 
             y: 800, 
@@ -30,6 +45,8 @@ export default class BuyAdventurerScene extends Scene {
         () => {
             Game.Engine.SceneManager.removeScene();
         });
+        base.add(adventurerNameInput);
+        base.add(adventurerNameInput2);
         base.add(closeButton);
         this.addUI(base);
     }

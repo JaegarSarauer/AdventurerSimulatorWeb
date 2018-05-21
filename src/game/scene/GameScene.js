@@ -51,9 +51,10 @@ export default class GameScene extends Scene {
         this.basePanel.add(this.settingsPanel);
         this.basePanel.add(this.adventurersPanel);
         this.addUI(this.basePanel);
+
+        Game.MessageManager.addMessage('Welcome to Adventurer Simulator.');
     }
 
     onUpdate() {
-        Game.MessageManager.addMessage('Testy ' + Math.random(), Game.MessageType.Normal);
     }
 }

@@ -7,7 +7,7 @@ class UIManager {
     }
 
     addInputListener(event, callback) {
-        return Engine.InputManager.events[event].watch(callback);
+        return Engine.InputManager.events[event].watch(callback, false);
     }
 
     /*

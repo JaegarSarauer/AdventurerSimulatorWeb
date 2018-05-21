@@ -1,6 +1,6 @@
 import Engine from '../Engine';
-import Updateable from '../update/Updateable';
 import Subscriber from './internal/Subscriber';
+import Updateable from '../update/Updateable';
 
 const InputManager = new (
     
@@ -20,6 +20,13 @@ class InputManager extends Updateable {
                 shiftHeld: false,
                 ctrlHeld: false,
             }),
+            KeyDown: new Subscriber({
+                key: '',
+                keyCode: 0,
+                shiftHeld: false,
+                ctrlHeld: false,
+                repeat: false,
+            })
         };
     }
 
@@ -44,6 +51,18 @@ class InputManager extends Updateable {
                 ctrlHeld: event.ctrlKey,
             });
         };
+
+        //Key down manager
+        Engine.CanvasManager.canvas.addEventListener('keydown', (event) => {
+            console.info(event);
+            this.events.KeyDown.set({
+                key: event.key,
+                keyCode: event.keyCode,
+                shiftHeld: event.shiftKey,
+                ctrlHeld: event.ctrlKey,
+                repeat: event.repeat,
+            });
+        });
     }
 }
 
