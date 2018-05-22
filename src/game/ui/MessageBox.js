@@ -8,9 +8,6 @@ export default class MessageBox extends Panel {
     constructor(style) {
         super(style);
         this.messages = [];
-        Game.MessageManager.messages.watch((messages) => {
-            this.rerender();
-        })
     }
 
     /*

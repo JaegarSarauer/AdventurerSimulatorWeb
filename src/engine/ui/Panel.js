@@ -66,9 +66,9 @@ export default class Panel extends Updateable {
     Cleanup code, and all children associated
     with it.
     */
-    destroy() {
+    onEnd() {
         for (let i = 0; i < Object.keys(this.children).length; i++) {
-            this.children[i].destroy();
+            this.children[i].onEnd();
         }
     }
 

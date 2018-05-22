@@ -51,9 +51,8 @@ class SceneManager extends Updateable {
             this.scenes[this.scenes.length - 1].unpause();
     }
 
-    addScene(scene, hasFocus) {
-        if (hasFocus)
-            this.onPause();
+    addScene(scene) {
+        this.onPause();
         this.scenes.push(scene);
     }
 

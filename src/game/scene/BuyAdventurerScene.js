@@ -45,9 +45,24 @@ export default class BuyAdventurerScene extends Scene {
         () => {
             Game.Engine.SceneManager.removeScene();
         });
+        let msg = new Button({
+            x: 1300, 
+            y: 800, 
+            w: 400, 
+            h: 200, 
+            backgroundColor: '#ff00f0',
+            textAlign: 'center',
+        }, 
+        'Send MSG', 
+        () => {
+            Game.MessageManager.addMessage('Welcome to Adventurer Simulator. ' + Math.random());
+        });
+
+
         base.add(adventurerNameInput);
         base.add(adventurerNameInput2);
         base.add(closeButton);
+        base.add(msg);
         this.addUI(base);
     }
 

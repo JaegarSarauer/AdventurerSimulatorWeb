@@ -1,6 +1,7 @@
 import Panel from '../../engine/ui/Panel';
 import Scene from '../../engine/scene/Scene';
 import MessageBox from '../ui/MessageBox';
+import SettingsPanel from '../ui/SettingsPanel';
 import * as Image from '../const/Image';
 import Game from '../Game';
 
@@ -33,13 +34,7 @@ export default class GameScene extends Scene {
             h: 400,
             backgroundImage: Image.UI.MessageBox,
         });
-        this.settingsPanel = new Panel({
-            x: 1600,
-            y: 1200,
-            w: 800,
-            h: 400,
-            backgroundColor: '#FF0F00'
-        });
+        this.settingsPanel = new SettingsPanel();
         this.adventurersPanel = new Panel({
             x: 1400,
             w: 1000,

@@ -54,7 +54,6 @@ class InputManager extends Updateable {
 
         //Key down manager
         Engine.CanvasManager.canvas.addEventListener('keydown', (event) => {
-            console.info(event);
             this.events.KeyDown.set({
                 key: event.key,
                 keyCode: event.keyCode,

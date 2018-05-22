@@ -3,16 +3,24 @@ import Button from './Button';
 
 export default class Input extends Button {
     constructor(style, text) {
-        super(style, text, 
+        super(Object.assign({ textAlign: 'left' }, style), text, 
             () => {
+                this.watchKeyInput();
                 this.updateStyle({backgroundColor: '#444444'});
             }, 
             () => {
+                this.stopKeyInput();
                 this.updateStyle({backgroundColor: '#000000'});
             });
         this.text = text;
+        this.keyboardListener = null;
+    }
+
+    watchKeyInput() {
+        if (this.keyboardListener !== null) //already listening
+            return;
         this.keyboardListener = UIManager.addInputListener('KeyDown', (ev) => {
-            if (!this.focussed)
+            if (!this.focussed || this.isPaused())
                 return;
             if (ev.keyCode === 8) {
                 this.text = this.text.substr(0, this.text.length - 1);
@@ -22,9 +30,14 @@ export default class Input extends Button {
         });
     }
 
-    destroy() {
-        this.keyboardListener.stop();
-        super.destroy();
+    stopKeyInput() {
+        if (this.keyboardListener !== null)
+            this.keyboardListener.stop();
+    }
+
+    onEnd() {
+        this.stopKeyInput();
+        super.onEnd();
     }
 
     /*

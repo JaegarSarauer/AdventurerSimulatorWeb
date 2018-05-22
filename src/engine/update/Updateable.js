@@ -35,6 +35,10 @@ export default class Updateable {
         this.destructor();
     }
 
+    isPaused() {
+        return this.hasPaused;
+    }
+
     pause() {
         if (!this.hasPaused) {
             this.onPause();

@@ -13,10 +13,8 @@ const Game = new (class AdventurerSimulator {
     }
 
     start() {
-        console.info('start')
         Engine.start();
-        Engine.SceneManager.addScene(new GameScene(), true);
-        Engine.SceneManager.addScene(new BuyAdventurerScene(), false);
+        Engine.SceneManager.addScene(new GameScene());
     }
 
     end() {
