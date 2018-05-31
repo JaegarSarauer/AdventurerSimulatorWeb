@@ -17,7 +17,7 @@ class CanvasManager extends Updateable {
         super(true);
 
         this.canvas = document.getElementById('canvas');
-        this.ctx = this.canvas.getContext('2d');
+        this.GL = this.canvas.getContext('webgl2');
 
         this.width = 0;
         this.height = 0;
@@ -32,10 +32,10 @@ class CanvasManager extends Updateable {
     }
 
     setCanvasSize(w, h) {
-        this.ctx.canvas.width = w;
-        this.ctx.canvas.height = h;
-        this.ctx.imageSmoothingEnabled = false;
-        this.ctx.webkitImageSmoothingEnabled = false;
+        this.GL.canvas.width = w;
+        this.GL.canvas.height = h;
+        this.GL.imageSmoothingEnabled = false;
+        this.GL.webkitImageSmoothingEnabled = false;
         this.adjust();
     }
 
@@ -44,8 +44,8 @@ class CanvasManager extends Updateable {
     DOM elements with the canvas should call this after.
     */
     adjust() {
-        this.ctx.imageSmoothingEnabled = false;
-        this.ctx.webkitImageSmoothingEnabled = false;
+        this.GL.imageSmoothingEnabled = false;
+        this.GL.webkitImageSmoothingEnabled = false;
 
         this.width = this.canvas.width;
         this.height = this.canvas.height;

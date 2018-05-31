@@ -3,6 +3,7 @@ import SceneManager from './manager/SceneManager';
 import UpdateManager from './manager/UpdateManager';
 import InputManager from './manager/InputManager';
 import CanvasManager from './manager/CanvasManager';
+import RendererManager from './manager/RendererManager';
 
 
 const Engine = new (
@@ -14,6 +15,7 @@ class Engine {
         this.SceneManager = SceneManager;
         this.InputManager = InputManager;
         this.UpdateManager = UpdateManager;
+        this.RendererManager = RendererManager;
     }
 
     start() {
